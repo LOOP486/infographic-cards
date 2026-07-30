@@ -1,0 +1,75 @@
+/* 信息图 · 视觉系统 v3 —— 素净版：中性墨色 + 红色单强调，无图标、无多色色块 */
+:root{
+  --ink:#1a1d22; --ink2:#41474f; --ink3:#727a83; --line:#e3e6ea; --line2:#eef0f3;
+  --paper:#ffffff; --wash:#f6f7f9; --wash2:#f0f1f4;
+  --red:#c02a2f; --red-d:#8f1519; --red-w:#fbeeed;
+  --r:12px; --r2:9px;
+  --sh:0 1px 2px rgba(20,24,30,.04);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Segoe UI",sans-serif;
+     color:var(--ink);margin:0;background:#e9ebef;line-height:1.6}
+
+/* ── 卡片：一节一张，可单独截 PNG ── */
+.sheet{width:900px;margin:0 auto;background:var(--paper);
+       padding:34px 40px 34px;position:relative;overflow:hidden;
+       border-top:4px solid var(--red);box-shadow:var(--sh)}
+.sheet > *{position:relative;z-index:1}
+
+/* ── 卡头 ── */
+.hd{display:flex;align-items:baseline;gap:14px;padding-bottom:15px;margin-bottom:20px;
+    border-bottom:1px solid var(--line)}
+.hd .kk{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--red);
+        text-transform:uppercase;flex:none}
+.hd .tt{display:flex;flex-direction:column}
+.hd h1{margin:0;font-size:24px;font-weight:900;letter-spacing:.5px}
+.hd .sub{margin:5px 0 0;color:var(--ink3);font-size:13.5px;font-weight:600}
+
+/* ── 通用文字（PPT 式：正文居中） ── */
+.lede{font-size:15px;line-height:1.8;margin:0 0 20px;color:var(--ink2);text-align:center}
+.lede b,.hl{color:var(--red);font-weight:800}
+.muted{color:var(--ink3)}
+
+/* ── 标签 chips（居中） ── */
+.axis{display:flex;gap:10px;flex-wrap:wrap;margin:2px 0;justify-content:center}
+.chip{font-size:13px;font-weight:700;color:var(--ink2);
+      background:var(--wash);border:1px solid var(--line);border-radius:6px;padding:6px 13px;letter-spacing:.3px}
+
+/* ── 三/多栏卡：去左竖条，改标题标红 + 内容居中（PPT 式） ── */
+.cols{display:flex;gap:14px}
+.box{flex:1;border:1px solid var(--line);border-radius:var(--r2);padding:18px 18px;background:var(--paper);
+     text-align:center}
+.box .bh{font-weight:800;font-size:15.5px;margin-bottom:9px;color:var(--red)}
+.box p{margin:0;font-size:13.5px;line-height:1.7;color:var(--ink2)}
+.box p b{color:var(--red);font-weight:800}
+.box ul{margin:0;padding-left:18px;text-align:left}
+.box li{font-size:13.5px;line-height:1.75;color:var(--ink2)}
+.box li::marker{color:var(--red)}
+/* 兼容旧的 a/b/c/g 类名：不再上色 */
+.box.a,.box.b,.box.c,.box.g{border-left:none}
+
+/* ── 层条（分层展示）：去红竖条，标题标红强调 ── */
+.bands{display:flex;flex-direction:column;gap:10px;margin:4px 0 18px}
+.band{display:flex;align-items:stretch;border-radius:var(--r2);overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.band .lv{flex:none;width:112px;display:flex;flex-direction:column;justify-content:center;
+     padding:13px 16px;background:var(--wash);border-right:1px solid var(--line);text-align:center}
+.band .lv .n{font-size:11px;color:var(--red);font-weight:800;letter-spacing:1px}
+.band .lv .t{font-size:15.5px;margin-top:2px;font-weight:800;color:var(--red)}
+.band .tx{flex:1;padding:13px 18px;font-size:14px;line-height:1.65;color:var(--ink2);align-self:center}
+.band .tx b{color:var(--red);font-weight:800}
+
+/* ── 流程箭头链 ── */
+.chain{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin:8px 0}
+.chain .n{background:var(--paper);border:1.4px solid var(--line);color:var(--ink);
+     border-radius:8px;padding:9px 15px;font-size:14.5px;font-weight:800}
+.chain .n.strong{background:var(--red);color:#fff;border-color:var(--red)}
+.chain .ar{color:var(--red);font-size:19px;font-weight:900;padding:0 10px}
+
+/* ── 底部小标注（居中） ── */
+.note{margin-top:20px;border-top:1px dashed var(--line);padding-top:13px;
+      color:var(--ink3);font-size:13px;line-height:1.7;text-align:center}
+.note b{color:var(--red)}
+.tagline{display:inline-block;background:var(--wash);border:1px solid var(--line);border-radius:7px;
+     padding:3px 11px;font-size:12.5px;margin:2px 4px 2px 0;color:var(--ink2)}
+

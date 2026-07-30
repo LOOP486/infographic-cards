@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<title>示例 · 流程图</title>
+<link rel="stylesheet" href="_信息图样式.css">
+<style>
+  /* 复杂流程图示例：主线纵向推进 → 决策点 → 两分支 → 汇合 → 结束。
+     分支用淡背景色 + 细边框区分（而非硬边框/多色），内容为占位。 */
+  .sheet{padding:34px 44px 34px}
+  .flowhd{text-align:center;margin-bottom:24px}
+  .flowhd .kk{font-size:12.5px;font-weight:800;letter-spacing:2px;color:var(--red)}
+  .flowhd h1{margin:6px 0 0;font-size:26px;font-weight:900}
+  .flowhd .sub{margin:8px 0 0;color:var(--ink3);font-size:14px;font-weight:600}
+
+  .flow{display:flex;flex-direction:column;align-items:center}
+  .node{width:460px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);
+        padding:14px 20px;text-align:center;box-shadow:var(--sh)}
+  .node .nt{font-size:16.5px;font-weight:800}
+  .node .nd{margin-top:5px;color:var(--ink3);font-size:13px;line-height:1.6;font-weight:600}
+  .down{width:2px;height:24px;background:#c7ccd3;position:relative;margin:3px 0}
+  .down::after{content:"";position:absolute;bottom:-1px;left:-4px;border:5px solid transparent;border-top-color:#c7ccd3}
+  .down .cap{position:absolute;left:11px;top:2px;white-space:nowrap;color:var(--ink3);font-size:12px;font-weight:700}
+
+  .mainrow{display:flex;align-items:center;justify-content:center;position:relative}
+  .node.main{border:2px solid var(--red);background:var(--red-w);width:460px}
+  .node.main .nt{color:var(--red-d)}
+  .loop{margin-left:14px;border-left:3px solid var(--red);padding-left:11px;text-align:left}
+  .loop .l1{color:var(--red);font-weight:800;font-size:13.5px}
+  .loop .l2{color:var(--ink3);font-size:12px;margin-top:2px;font-weight:600}
+
+  .decide{background:var(--ink);color:#fff;font-weight:800;font-size:15.5px;
+          border-radius:30px;padding:13px 36px;text-align:center;margin:2px 0}
+
+  .split{width:700px;height:22px;position:relative;margin-top:4px}
+  .split .h{position:absolute;top:0;left:96px;right:96px;height:2px;background:#c7ccd3}
+  .split .lv{position:absolute;top:0;width:2px;height:22px;background:#c7ccd3}
+  .split .lv.l{left:96px} .split .lv.r{right:96px}
+  .split .lv::after{content:"";position:absolute;bottom:-1px;left:-4px;border:5px solid transparent;border-top-color:#c7ccd3}
+
+  .branches{display:flex;gap:28px;justify-content:center;align-items:flex-start}
+  .branch{width:420px;display:flex;flex-direction:column;align-items:center;gap:9px}
+  .bhead{width:100%;color:#fff;font-weight:800;font-size:15px;border-radius:9px;padding:12px 16px;text-align:center}
+  .bhead.a{background:var(--red)}
+  .bhead.b{background:var(--ink2)}
+  .step{width:100%;border-radius:8px;padding:11px 15px;font-size:13.5px;line-height:1.55;color:var(--ink2)}
+  .branch.a .step{background:rgba(192,42,47,.07);border:1px solid rgba(192,42,47,.18)}
+  .branch.b .step{background:rgba(61,68,77,.06);border:1px solid rgba(61,68,77,.16)}
+  .step .no{font-weight:900;margin-right:8px}
+  .branch.a .step .no{color:var(--red)}
+  .branch.b .step .no{color:var(--ink2)}
+  .sdown{width:2px;height:8px;background:#c7ccd3}
+
+  .merge{width:700px;height:24px;position:relative;margin-top:6px}
+  .merge .h{position:absolute;bottom:0;left:96px;right:96px;height:2px;background:#c7ccd3}
+  .merge .lv{position:absolute;top:0;width:2px;height:24px;background:#c7ccd3}
+  .merge .lv.l{left:96px} .merge .lv.r{right:96px}
+  .merge .mid{position:absolute;bottom:-1px;left:50%;margin-left:-1px;width:2px;height:12px;background:#c7ccd3}
+  .merge .mid::after{content:"";position:absolute;bottom:-1px;left:-4px;border:5px solid transparent;border-top-color:#c7ccd3}
+
+  .node.end{border:2px solid var(--ink);width:560px}
+  .node.end .nt{color:var(--ink)}
+</style>
+</head><body>
+<div class="sheet">
+  <div class="flowhd">
+    <div class="kk">FLOW · 示例</div>
+    <h1>流程图示例</h1>
+    <p class="sub">主线纵向推进 · 中途按条件分为两支 · 汇合结束</p>
+  </div>
+
+  <div class="flow">
+    <div class="node"><div class="nt">起始节点</div><div class="nd">占位说明：入口条件 / 触发方式</div></div>
+    <div class="down"></div>
+    <div class="node"><div class="nt">前置步骤</div><div class="nd">占位说明：进入主线前的准备或提示</div></div>
+    <div class="down"></div>
+
+    <div class="mainrow">
+      <div class="node main"><div class="nt">主线步骤（可循环）</div></div>
+      <div class="loop"><div class="l1">↑ 再来一次</div><div class="l2">循环推进</div></div>
+    </div>
+    <div class="down"><span class="cap">推进</span></div>
+
+    <div class="node"><div class="nt">单次循环内容</div>
+      <div class="nd">占位说明：一次循环里发生的事，可用 <b style="color:var(--red)">红字</b> 标关键点</div></div>
+    <div class="down"></div>
+
+    <div class="decide">◇ 决策点：走哪一支？（占位）</div>
+
+    <div class="split"><div class="h"></div><div class="lv l"></div><div class="lv r"></div></div>
+
+    <div class="branches">
+      <div class="branch a">
+        <div class="bhead a">分支 A · 标题占位</div>
+        <div class="step"><span class="no">1</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">2</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">3</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">4</span>步骤占位 → 结果</div>
+      </div>
+      <div class="branch b">
+        <div class="bhead b">分支 B · 标题占位</div>
+        <div class="step"><span class="no">1</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">2</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">3</span>步骤占位</div>
+        <div class="sdown"></div>
+        <div class="step"><span class="no">4</span>步骤占位 → 结果</div>
+      </div>
+    </div>
+
+    <div class="merge"><div class="lv l"></div><div class="lv r"></div><div class="h"></div><div class="mid"></div></div>
+
+    <div class="node end"><div class="nt">结束节点</div>
+      <div class="nd">占位说明：两支汇入同一条结束线</div></div>
+  </div>
+
+  <div class="note">
+    <b>主线</b>纵向推进并带自循环；中途按决策点分为
+    <b style="color:var(--red)">分支 A</b> / <b>分支 B</b> 两支，各自独立，最后汇入同一条结束线。
+  </div>
+</div>
+</body></html>

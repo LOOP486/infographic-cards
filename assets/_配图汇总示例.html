@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<title>示例 · 配图汇总</title>
+<style>
+  :root{
+    --ink:#1a1d22; --ink2:#41474f; --ink3:#727a83; --line:#e3e6ea;
+    --paper:#ffffff; --wash:#f6f7f9; --red:#c02a2f;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Segoe UI",sans-serif;
+       color:var(--ink);margin:0;background:#eceef1;line-height:1.6}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}
+  header{border-top:4px solid var(--red);background:var(--paper);border:1px solid var(--line);
+         border-radius:12px;padding:26px 30px;margin-bottom:32px;box-shadow:0 1px 2px rgba(20,24,30,.04)}
+  header .kk{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--red);text-transform:uppercase}
+  header h1{margin:6px 0 4px;font-size:26px;font-weight:900}
+  header p{margin:0;color:var(--ink3);font-size:14px;font-weight:600}
+  .fig{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+       margin-bottom:26px;box-shadow:0 1px 2px rgba(20,24,30,.04)}
+  .fig .cap{display:flex;align-items:baseline;gap:12px;padding:15px 24px;border-bottom:1px solid var(--line)}
+  .fig .cap .no{font-size:13px;font-weight:900;color:var(--red);letter-spacing:1px;flex:none}
+  .fig .cap .t{font-size:16px;font-weight:800}
+  .fig .cap .s{font-size:13px;color:var(--ink3);font-weight:600}
+  /* 关键：图片留边，勿用 width:100%（会挤到卡片边缘无留白） */
+  .fig img{display:block;width:calc(100% - 48px);height:auto;margin:20px 24px 24px}
+  footer{color:var(--ink3);font-size:12.5px;text-align:center;margin-top:10px}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div class="kk">SUMMARY</div>
+    <h1>配图汇总 · 示例</h1>
+    <p>一页浏览全部配图；单张交付件在同目录的 PNG，源文本见上一级的 <code>NN-名称.md</code>。</p>
+  </header>
+
+  <div class="fig">
+    <div class="cap"><span class="no">01</span><span class="t">章节标题占位</span><span class="s">· 一、章节名</span></div>
+    <img src="01-xxx.png" alt="章节一">
+  </div>
+  <div class="fig">
+    <div class="cap"><span class="no">02</span><span class="t">章节标题占位</span><span class="s">· 二、章节名</span></div>
+    <img src="02-xxx.png" alt="章节二">
+  </div>
+  <div class="fig">
+    <div class="cap"><span class="no">03</span><span class="t">章节标题占位</span><span class="s">· 三、章节名</span></div>
+    <img src="03-xxx.png" alt="章节三">
+  </div>
+
+  <footer>配图汇总示例 · 增删 .fig 块即可对应图片数量</footer>
+</div>
+</body></html>
