@@ -1,5 +1,6 @@
 /* 信息图 · 视觉系统 v3 —— 素净版：中性墨色 + 红色单强调，无图标、无多色色块 */
 :root{
+  --sheet-width:900px;
   --ink:#1a1d22; --ink2:#41474f; --ink3:#727a83; --line:#e3e6ea; --line2:#eef0f3;
   --paper:#ffffff; --wash:#f6f7f9; --wash2:#f0f1f4;
   --red:#c02a2f; --red-d:#8f1519; --red-w:#fbeeed;
@@ -12,7 +13,7 @@ body{font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Segoe UI",sans-
      color:var(--ink);margin:0;background:#e9ebef;line-height:1.6}
 
 /* ── 卡片：一节一张，可单独截 PNG ── */
-.sheet{width:900px;margin:0 auto;background:var(--paper);
+.sheet{width:var(--sheet-width);max-width:100%;margin:0 auto;background:var(--paper);
        padding:34px 40px 34px;position:relative;overflow:hidden;
        border-top:4px solid var(--red);box-shadow:var(--sh)}
 .sheet > *{position:relative;z-index:1}
@@ -66,10 +67,29 @@ body{font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Segoe UI",sans-
 .chain .n.strong{background:var(--red);color:#fff;border-color:var(--red)}
 .chain .ar{color:var(--red);font-size:19px;font-weight:900;padding:0 10px}
 
+/* ── 表格：桌面完整展示，窄屏在容器内滚动 ── */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r2)}
+.tablewrap table{border-collapse:collapse;width:100%;min-width:720px;font-size:13px;text-align:left}
+.tablewrap th{background:var(--wash);font-weight:800;color:var(--ink)}
+.tablewrap td,.tablewrap th{padding:12px 14px;vertical-align:top;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tablewrap tr:last-child td{border-bottom:0}
+.tablewrap th:last-child,.tablewrap td:last-child{border-right:0}
+
 /* ── 底部小标注（居中） ── */
 .note{margin-top:20px;border-top:1px dashed var(--line);padding-top:13px;
       color:var(--ink3);font-size:13px;line-height:1.7;text-align:center}
 .note b{color:var(--red)}
 .tagline{display:inline-block;background:var(--wash);border:1px solid var(--line);border-radius:7px;
      padding:3px 11px;font-size:12.5px;margin:2px 4px 2px 0;color:var(--ink2)}
+
+@media(max-width:760px){
+  .sheet{padding:28px 20px}
+  .hd{align-items:flex-start;flex-direction:column;gap:5px}
+  .hd h1{font-size:22px}
+  .cols{flex-direction:column}
+  .band .lv{width:104px;padding:12px 10px}
+  .chain{gap:7px}
+  .chain .ar{padding:0 3px}
+  .tablewrap{margin-left:-20px;margin-right:-20px;border-radius:0}
+}
 
