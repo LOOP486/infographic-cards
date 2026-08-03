@@ -1,12 +1,12 @@
 # ============================================================
-# 信息图渲染脚本：html -> png（统一宽度 900，高度自适应）
+# 信息图渲染脚本：html -> png（默认宽度 900，可配置，高度自适应）
 # 用法（PowerShell）：
 #   ./渲染图片.ps1 中间产物/03-流程.html            # 输出到 图片/03-流程.png
 #   ./渲染图片.ps1 中间产物/*.html                   # 批量
 #   ./渲染图片.ps1 中间产物/03-流程.html -Out 图片/x.png
 # 说明：
-#   - 视口宽须与 CSS 里 .sheet 卡片宽一致（当前 900px），否则右侧 padding 会被裁。
-#   - 输出 PNG 宽统一 = 900 * 缩放(2) = 1800px，高度贴合内容自动裁剪。
+#   - 视口宽须与 CSS 的 --sheet-width 一致，否则会裁切或产生多余留白。
+#   - 输出 PNG 宽 = Width * Scale，高度贴合内容自动裁剪。
 #   - 依赖 Chrome（无则回退 Edge）。不改源 html，渲染时临时注入透明背景。
 # ============================================================
 param(
@@ -30,7 +30,7 @@ function Render-One($htmlPath, $outPath) {
   $raw = Get-Content $htmlPath -Raw -Encoding UTF8
 
   # 临时副本：注入透明背景 + card 贴左上，便于精确裁剪
-  $inject = "<style>html,body{background:transparent!important;margin:0!important;padding:0!important}.card{margin:0!important}</style>"
+  $inject = "<style>html,body{background:transparent!important;margin:0!important;padding:0!important}.sheet,.card{margin:0!important}</style>"
   if ($raw -match '</head>') { $tmpHtml = $raw -replace '</head>', "$inject</head>" }
   else { $tmpHtml = $inject + $raw }
   $tmpPath = Join-Path $srcDir ("_render_tmp_{0}.html" -f (Split-Path $htmlPath -Leaf))
